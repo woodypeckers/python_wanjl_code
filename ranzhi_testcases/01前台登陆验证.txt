@@ -1,0 +1,9 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          公共关键字.robot
+Resource          业务关键字.robot
+
+*** Test Cases ***
+管理员登陆验证
+    前台登陆    http://localhost/ranzhi/www/    admin    123456    然之
+    [Teardown]    退出登陆

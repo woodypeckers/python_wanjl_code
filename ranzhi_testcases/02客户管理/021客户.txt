@@ -1,0 +1,53 @@
+*** Settings ***
+Resource          ../公共关键字.robot
+Resource          ../业务关键字.robot
+
+*** Test Cases ***
+添加客户
+    [Setup]    管理员前台登陆
+    Click Button    xpath=/html/body/div[1]/div[1]/div[1]/ul[1]/li[2]/button    #点击左侧边栏客户管理(xpath不唯一，带绝对路径)
+    sleep    3
+    Select Frame    id=iframe-1
+    sleep    3
+    Click link    xpath=/html/body/nav[1]/div[2]/ul/li[4]/a    #点击客户管理
+    sleep    3
+    @{list}    List Windows
+    Log    list[0]    debug
+    sleep    3
+    Click link    xpath=/html/body/nav/div[2]/ul/li[4]/a    #点击客户
+    sleep    3
+    Click Link    xpath=.//*[@id='menuActions']/a    #添加客户
+    sleep    3
+    Input Text    id=name    zhangsan
+    Input Text    id=contact    lisi
+    Input Text    id=phone    12345678910
+    Input Text    id=email    123456@qq.com
+    Input Text    id=qq    123456
+    Select From List By Value    id=type    national
+    Select From List By Index    id=size    1
+    Select From List By Value    id=status    signed
+    Select From List By Value    id=level    C
+    Input Text    id=intension    产品很好
+    Click Button    id=submit
+    [Teardown]    退出登陆
+
+删除客户
+    [Setup]    管理员前台登陆
+    Click Button    xpath=/html/body/div[1]/div[1]/div[1]/ul[1]/li[2]/button    #点击左侧边栏客户管理(xpath不唯一，带绝对路径)
+    sleep    3
+    Select Frame    id=iframe-1
+    sleep    3
+    Click link    xpath=/html/body/nav[1]/div[2]/ul/li[4]/a    #点击客户管理
+    sleep    3
+    @{list}    List Windows
+    Log    list[0]    debug
+    sleep    3
+    Click link    xpath=/html/body/nav/div[2]/ul/li[4]/a    #点击客户
+    sleep    3
+    Click Link    xpath=.//*[@id='ajaxForm']/table/tbody/tr/td[11]/div/a    #点击更多
+    sleep    3
+    Click Element    xpath=.//*[@id='ajaxForm']/table/tbody/tr/td[11]/div/ul/li[4]/a    #选择删除
+    sleep    3
+    Choose Ok On Next Confirmation
+    Confirm Action
+    [Teardown]    退出登陆

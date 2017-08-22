@@ -1,0 +1,11 @@
+*** Test Cases ***
+添加成员
+    [Setup]    管理员前台登陆
+    click    xpath=.//*[@id='s-menu-allapps']/button    #点击左侧边栏所有应用
+    sleep    3
+    Click    xpath=.//*[@id='s-applist-superadmin']/a    #点击后台管理
+    sleep    3
+    \    iframe-superadmin
+    Click link    xpath=.//*[@id='mainNavbar']/div[2]/ul/li[3]/a    #点击合同
+    choose
+    [Teardown]    退出登陆

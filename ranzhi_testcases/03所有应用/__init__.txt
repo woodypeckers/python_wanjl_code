@@ -1,0 +1,3 @@
+*** Settings ***
+Resource          ../业务关键字.robot
+Resource          ../公共关键字.robot

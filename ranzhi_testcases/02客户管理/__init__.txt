@@ -1,0 +1,4 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../公共关键字.robot
+Resource          ../业务关键字.robot
